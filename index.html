@@ -514,6 +514,7 @@
             box-shadow: 0 24px 64px rgba(22,62,103,.25);
             animation: slideIn .25s ease-out;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes slideIn {
             from { opacity:0; transform:translateY(-24px); }
             to   { opacity:1; transform:translateY(0); }
@@ -690,7 +691,7 @@
                         </ul>
                     </div>
                     <div class="tool-actions">
-                        <a href="https://suyttenhoef-cyber.github.io/fonds-chauffage-simulator/" target="_blank" class="btn btn-primary btn-full">
+                        <a href="https://suyttenhoef-cyber.github.io/simulateur_chauffage/" target="_blank" class="btn btn-primary btn-full">
                             <i class="fas fa-external-link-alt"></i> Utiliser l'outil
                         </a>
                         <button class="btn btn-outline btn-full" onclick="openModal('chauffage')">
@@ -729,6 +730,59 @@
                         <button class="btn btn-outline btn-full" onclick="openModal('ri')">
                             <i class="fas fa-info-circle"></i> Instructions
                         </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Outil 3 : Allocations Handicap -->
+            <div class="tool-card" style="grid-column: 1 / -1;">
+                <div class="tool-card-header">
+                    <div class="tool-icon-wrap"><i class="fas fa-wheelchair"></i></div>
+                    <h3>Simulateur Allocations Handicap (ARR & AI)</h3>
+                    <span class="tool-cat">Personnes handicapées</span>
+                </div>
+                <div class="tool-card-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <p class="tool-desc">
+                            Estimez le montant des allocations pour personnes handicapées : l'Allocation de Remplacement de Revenus (ARR) pour les personnes dont la capacité de gain est réduite d'au moins 66%, et l'Allocation d'Intégration (AI) pour les personnes dont l'autonomie est réduite (score minimum 7 points).
+                        </p>
+                        <div>
+                            <div class="tool-features-title"><i class="fas fa-check-circle"></i> Fonctionnalités principales</div>
+                            <ul class="feature-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                                <li><i class="fas fa-check"></i> Simulation ARR & AI combinée</li>
+                                <li><i class="fas fa-check"></i> Calcul par catégorie (A, B, C)</li>
+                                <li><i class="fas fa-check"></i> Prise en compte des revenus du ménage</li>
+                                <li><i class="fas fa-check"></i> Degré de handicap & autonomie</li>
+                                <li><i class="fas fa-check"></i> Personnes à charge</li>
+                                <li><i class="fas fa-check"></i> Résumé imprimable</li>
+                            </ul>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://suyttenhoef-cyber.github.io/simulateur_handicape/" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Utiliser l'outil
+                            </a>
+                            <button class="btn btn-outline" onclick="openModal('handicap')">
+                                <i class="fas fa-info-circle"></i> Instructions
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Aperçu iframe -->
+                    <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--border); background: var(--bg-page); min-height: 260px;">
+                        <div id="iframeLoader" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg-page);z-index:2;">
+                            <div style="text-align:center;color:var(--text-muted);">
+                                <div style="width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px;"></div>
+                                <span style="font-size:13px;">Chargement de l'aperçu…</span>
+                            </div>
+                        </div>
+                        <iframe
+                            src="https://suyttenhoef-cyber.github.io/simulateur-handicap/"
+                            title="Aperçu simulateur allocations handicap"
+                            style="width:100%;height:280px;border:none;display:block;"
+                            sandbox="allow-scripts allow-same-origin allow-forms"
+                            onload="document.getElementById('iframeLoader').style.display='none'"
+                        ></iframe>
                     </div>
                 </div>
             </div>
@@ -935,6 +989,24 @@
                     <li><i class="fas fa-check"></i> Vérifiez la date de livraison (délai de 60 jours)</li>
                     <li><i class="fas fa-check"></i> Pour les bénéficiaires BIM, préparez l'attestation</li>
                     <li><i class="fas fa-check"></i> Utilisez l'option "Imprimer" pour conserver une trace</li>
+                </ul>`
+        },
+        handicap: {
+            title: 'Instructions — Simulateur Allocations Handicap (ARR & AI)',
+            html: `
+                <h4><i class="fas fa-wheelchair"></i> Comment utiliser le simulateur</h4>
+                <ol class="step-list">
+                    <li><strong>Situation familiale</strong>Sélectionnez la catégorie applicable : A (isolé), B (cohabitant), ou C (avec personnes à charge).</li>
+                    <li><strong>Degré de handicap</strong>Indiquez le taux de réduction de la capacité de gain (min. 66% pour l'ARR) et le score d'autonomie (min. 7 points pour l'AI).</li>
+                    <li><strong>Revenus du ménage</strong>Renseignez les revenus nets du demandeur et du ménage, ainsi que le nombre de personnes à charge.</li>
+                    <li><strong>Résultat</strong>Consultez les montants estimés pour l'ARR et l'AI, puis imprimez le résumé pour le dossier.</li>
+                </ol>
+                <h4><i class="fas fa-lightbulb"></i> Conseils pratiques</h4>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Ayez la décision du SPF Sécurité Sociale à portée de main</li>
+                    <li><i class="fas fa-check"></i> Vérifiez le score d'autonomie de la grille médicale</li>
+                    <li><i class="fas fa-check"></i> Préparez les fiches de paie ou attestations de revenus</li>
+                    <li><i class="fas fa-check"></i> L'outil est indicatif — la décision finale revient au SPF</li>
                 </ul>`
         },
         ri: {
