@@ -112,7 +112,7 @@
 
         /* ── HERO ── */
         .hero {
-            padding: 72px 0 64px;
+            padding: 25px;
             position: relative; overflow: hidden;
         }
 
@@ -239,8 +239,15 @@
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+        @media (max-width: 1024px) {
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .tools-grid { grid-template-columns: 1fr; }
         }
 
         /* ── TOOL CARD ── */
@@ -638,15 +645,15 @@
 
             <div class="hero-visual">
                 <div class="hero-stat">
-                    <span class="hero-stat-num">175+</span>
+                    <span class="hero-stat-num">200+</span>
                     <span class="hero-stat-label">Agents actifs</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="hero-stat-num">500+</span>
+                    <span class="hero-stat-num">2 500+</span>
                     <span class="hero-stat-label">Calculs effectués</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="hero-stat-num">45%</span>
+                    <span class="hero-stat-num">50%</span>
                     <span class="hero-stat-label">Temps économisé</span>
                 </div>
             </div>
@@ -691,7 +698,7 @@
                         </ul>
                     </div>
                     <div class="tool-actions">
-                        <a href="https://suyttenhoef-cyber.github.io/simulateur_chauffage/" target="_blank" class="btn btn-primary btn-full">
+                        <a href="https://suyttenhoef-cyber.github.io/fonds-chauffage-simulator/" target="_blank" class="btn btn-primary btn-full">
                             <i class="fas fa-external-link-alt"></i> Utiliser l'outil
                         </a>
                         <button class="btn btn-outline btn-full" onclick="openModal('chauffage')">
@@ -705,7 +712,7 @@
             <div class="tool-card">
                 <div class="tool-card-header">
                     <div class="tool-icon-wrap"><i class="fas fa-euro-sign"></i></div>
-                    <h3>Calculateur du Revenu d'Intégration (RI)</h3>
+                    <h3>Calculateur du revenu d'intégration</h3>
                     <span class="tool-cat">Aides sociales</span>
                 </div>
                 <div class="tool-card-body">
@@ -736,36 +743,33 @@
 
 
             <!-- Outil 3 : Allocations Handicap -->
-            <div class="tool-card" style="grid-column: 1 / -1;">
+            <div class="tool-card">
                 <div class="tool-card-header">
                     <div class="tool-icon-wrap"><i class="fas fa-wheelchair"></i></div>
-                    <h3>Simulateur Allocations Handicap (ARR & AI)</h3>
+                    <h3>Simulateur allocations handicap</h3>
                     <span class="tool-cat">Personnes handicapées</span>
                 </div>
-                <div class="tool-card-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        <p class="tool-desc">
-                            Estimez le montant des allocations pour personnes handicapées : l'Allocation de Remplacement de Revenus (ARR) pour les personnes dont la capacité de gain est réduite d'au moins 66%, et l'Allocation d'Intégration (AI) pour les personnes dont l'autonomie est réduite (score minimum 7 points).
-                        </p>
-                        <div>
-                            <div class="tool-features-title"><i class="fas fa-check-circle"></i> Fonctionnalités principales</div>
-                            <ul class="feature-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-                                <li><i class="fas fa-check"></i> Simulation ARR & AI combinée</li>
-                                <li><i class="fas fa-check"></i> Calcul par catégorie (A, B, C)</li>
-                                <li><i class="fas fa-check"></i> Prise en compte des revenus du ménage</li>
-                                <li><i class="fas fa-check"></i> Degré de handicap & autonomie</li>
-                                <li><i class="fas fa-check"></i> Personnes à charge</li>
-                                <li><i class="fas fa-check"></i> Résumé imprimable</li>
-                            </ul>
-                        </div>
-                        <div class="tool-actions">
-                            <a href="https://suyttenhoef-cyber.github.io/simulateur_handicape/" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-external-link-alt"></i> Utiliser l'outil
-                            </a>
-                            <button class="btn btn-outline" onclick="openModal('handicap')">
-                                <i class="fas fa-info-circle"></i> Instructions
-                            </button>
-                        </div>
+                <div class="tool-card-body">
+                    <p class="tool-desc">
+                        Estimez le montant des allocations pour personnes handicapées : l'ARR (capacité de gain réduite d'au moins 66%) et l'AI (autonomie réduite, score minimum 7 points).
+                    </p>
+                    <div>
+                        <div class="tool-features-title"><i class="fas fa-check-circle"></i> Fonctionnalités principales</div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Simulation ARR & AI combinée</li>
+                            <li><i class="fas fa-check"></i> Calcul par catégorie (A, B, C)</li>
+                            <li><i class="fas fa-check"></i> Prise en compte des revenus du ménage</li>
+                            <li><i class="fas fa-check"></i> Degré de handicap & score d'autonomie</li>
+                            <li><i class="fas fa-check"></i> Résumé imprimable</li>
+                        </ul>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://suyttenhoef-cyber.github.io/simulateur-handicap/" target="_blank" class="btn btn-primary btn-full">
+                            <i class="fas fa-external-link-alt"></i> Utiliser l'outil
+                        </a>
+                        <button class="btn btn-outline btn-full" onclick="openModal('handicap')">
+                            <i class="fas fa-info-circle"></i> Instructions
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1032,6 +1036,3 @@
 </script>
 </body>
 </html>
-
-
-
